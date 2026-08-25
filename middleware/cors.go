@@ -10,7 +10,7 @@ import (
 func CorsMiddleware() fiber.Handler {
 	allowedOrigins := os.Getenv("CORS_ORIGINS")
 	if allowedOrigins == "" {
-		allowedOrigins = "https://frontend-manbig-phi.vercel.app,http://localhost:5173"
+		allowedOrigins = "https://frontend-manbig-phi.vercel.app"
 	}
 
 	return cors.New(cors.Config{
