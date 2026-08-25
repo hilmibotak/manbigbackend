@@ -9,15 +9,14 @@ import (
 
 func CorsMiddleware() fiber.Handler {
 	allowedOrigins := os.Getenv("CORS_ORIGINS")
-
 	if allowedOrigins == "" {
-		allowedOrigins = "https://manbigfrontend.vercel.app,http://localhost:5173"
+		allowedOrigins = "https://frontend-manbig-phi.vercel.app,http://localhost:5173"
 	}
 
 	return cors.New(cors.Config{
-		AllowOrigins:     allowedOrigins,
+		AllowOrigins:     allowedOrigins, // Frontend tetap + Railway domain untuk Swagger
 		AllowHeaders:     "Origin, Content-Type, Accept, Authorization, X-Requested-With",
 		AllowMethods:     "GET,POST,PUT,DELETE,PATCH,OPTIONS",
-		AllowCredentials: true,
+		AllowCredentials: true, // Kembali ke true untuk frontend
 	})
 }
